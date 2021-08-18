@@ -1,0 +1,74 @@
+<div class="row">
+
+{% for card in cards %}
+<div class = "resize col">
+<div class="card ">
+    <div class="front border border-5 border-primary rounded" style="background-image: url('/static/uploads/{{card.img}}')">
+      <p class="large">{{loop.index}}</p>
+      <div class="position-absolute bottom-0 container row row-cols-4 p-1 stats">
+          <div class="col py-2" style="background-image: url('/static/img/banner-rojo.png')">
+              <div>
+                  ATQ
+              </div>
+              <div>
+                  {{card.attack}}
+              </div>
+              <div class="attack pt-2" >
+                  <i class="fas fa-fist-raised icon"></i>
+              </div>
+              
+          </div>
+          <div class="col py-2" style="background-image: url('/static/img/banner-verde.png')">
+              <div>
+                  DEF
+              </div>
+              <div>
+                {{card.defense}}
+              </div>
+              <div class="defense pt-2">
+                  <i class="fas fa-shield-alt icon"></i>
+              </div>
+          </div>
+          <div class="col py-2" style="background-image: url('/static/img/banner-azul.png')">
+            <div>
+                  INT
+              </div>
+              <div>
+                {{card.intelligence}}
+              </div>
+              <div class="intelligence pt-2">
+                  <i class="fas fa-brain icon"></i>
+              </div>
+          </div>
+          <div class="col py-2" style="background-image: url('/static/img/banner-amarillo.png')">
+            <div>
+                  VEL
+              </div>
+              <div>
+                {{card.speed}}
+              </div>
+              <div class="speed pt-2">
+                  <i class="fas fa-running icon"></i>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="back border border-5 border-primary rounded">
+      <div>
+        <div class="name">{{card.name}}<span class="owner">({{card.user.name}})</span></div>
+        <div class="winrate">
+          <label>1</label>
+          <i class="fas fa-percentage percentage"></i>
+        </div>
+        <p class="review">"wos"</p>
+        <p class="overview">Espartaco espartaco espartaco</p>
+  
+        <a href="{{ url_for('views.home')}}" class="button">Comprar</a>
+      </div>
+    </div>
+  </div>
+</div>
+  {% endfor %}
+      
+
+</div>

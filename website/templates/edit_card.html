@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{%block create_card%}active{%endblock%}
+{%block content%}
+
+<h3 class="center">Modificar Carta</h3>
+<form method="POST" action="{{url_for('views.edit_card')}}" enctype = "multipart/form-data">
+    <div class="mb-3">
+      <label for="name" class="form-label">Nombre</label>
+      <input type="text" name="name" class="form-control" id="name" value="{{card.name}}">
+      <div id="nameHelp" class="form-text">Este será el nombre de tu carta.</div>
+    </div>
+    <div class="mb-3">
+      <label for="attack" class="form-label">Ataque</label>
+      <input type="number" name="attack" class="form-control" value="{{card.attack}}">
+    </div>
+    <div class="mb-3">
+        <label for="defense" class="form-label">Defensa</label>
+        <input type="number" name="defense" class="form-control" value="{{card.defense}}">
+      </div>
+      <div class="mb-3">
+        <label for="intelligence" class="form-label">Inteligencia</label>
+        <input type="number" name="intelligence" class="form-control" value="{{card.intelligence}}">
+      </div>
+      <div class="mb-3">
+        <label for="speed" class="form-label">Velocidad</label>
+        <input type="number" name="speed" class="form-control" value="{{card.speed}}">
+      </div>
+      <div class="mb-3">
+        <label for="img" class="form-label">Sube la foto de tu campeón! (si no subes ninguna foto se mantendrá la anterior)</label>
+        <input type="file" name="img" class="form-control">
+        <div id="imgHelp" class="form-text">Puede ser lo que quieras.</div>
+      </div>
+
+    <button type="submit" class="btn btn-primary">Crear carta</button>
+  </form>
+{%endblock%}

@@ -1,0 +1,291 @@
+{% extends "base.html" %}
+{%block content%}
+<h1 class="heading">Prepárate para la batalla</h1>
+<p class="description">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+</p>
+
+{%if user.name == player1.name%}
+<div class = "resize col">
+  <div class="card ">
+      <div class="front border border-5 border-primary rounded" style="background-image: url('/static/uploads/{{player2.cards[0].img}}')">
+        <p class="large"></p>
+        <div class="position-absolute bottom-0 container row row-cols-4 p-1 stats">
+            <div class="col py-2" style="background-image: url('/static/img/banner-rojo.png')">
+                <div>
+                    ATQ
+                </div>
+                <div>
+                    {{player2.cards[0].attack}}
+                </div>
+                <div class="attack pt-2" >
+                    <i class="fas fa-fist-raised icon"></i>
+                </div>
+                
+            </div>
+            <div class="col py-2" style="background-image: url('/static/img/banner-verde.png')">
+                <div>
+                    DEF
+                </div>
+                <div>
+                  {{player2.cards[0].defense}}
+                </div>
+                <div class="defense pt-2">
+                    <i class="fas fa-shield-alt icon"></i>
+                </div>
+            </div>
+            <div class="col py-2" style="background-image: url('/static/img/banner-azul.png')">
+              <div>
+                    INT
+                </div>
+                <div>
+                  {{player2.cards[0].intelligence}}
+                </div>
+                <div class="intelligence pt-2">
+                    <i class="fas fa-brain icon"></i>
+                </div>
+            </div>
+            <div class="col py-2" style="background-image: url('/static/img/banner-amarillo.png')">
+              <div>
+                    VEL
+                </div>
+                <div>
+                  {{player2.cards[0].speed}}
+                </div>
+                <div class="speed pt-2">
+                    <i class="fas fa-running icon"></i>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="back border border-5 border-primary rounded">
+        <div>
+          <div class="name">{{player2.cards[0].name}}<span class="owner">({{player2.name}})</span></div>
+          <div class="winrate">
+            <label>1</label>
+            <i class="fas fa-percentage percentage"></i>
+          </div>
+          <p class="review">"wos"</p>
+          <p class="overview">Espartaco espartaco espartaco</p>
+    
+          <a href="{{ url_for('views.home')}}" class="button">Comprar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class = "resize col">
+    <div class="card ">
+        <div class="front border border-5 border-primary rounded" style="background-image: url('/static/uploads/{{player1.cards[0].img}}')">
+          <p class="large"></p>
+          <div class="position-absolute bottom-0 container row row-cols-4 p-1 stats">
+              <div class="col py-2" style="background-image: url('/static/img/banner-rojo.png')">
+                  <div>
+                      ATQ
+                  </div>
+                  <div>
+                      {{player1.cards[0].attack}}
+                  </div>
+                  <div class="attack pt-2" >
+                      <i class="fas fa-fist-raised icon"></i>
+                  </div>
+                  
+              </div>
+              <div class="col py-2" style="background-image: url('/static/img/banner-verde.png')">
+                  <div>
+                      DEF
+                  </div>
+                  <div>
+                    {{player1.cards[0].defense}}
+                  </div>
+                  <div class="defense pt-2">
+                      <i class="fas fa-shield-alt icon"></i>
+                  </div>
+              </div>
+              <div class="col py-2" style="background-image: url('/static/img/banner-azul.png')">
+                <div>
+                      INT
+                  </div>
+                  <div>
+                    {{player1.cards[0].intelligence}}
+                  </div>
+                  <div class="intelligence pt-2">
+                      <i class="fas fa-brain icon"></i>
+                  </div>
+              </div>
+              <div class="col py-2" style="background-image: url('/static/img/banner-amarillo.png')">
+                <div>
+                      VEL
+                  </div>
+                  <div>
+                    {{player1.cards[0].speed}}
+                  </div>
+                  <div class="speed pt-2">
+                      <i class="fas fa-running icon"></i>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <div class="back border border-5 border-primary rounded">
+          <div>
+            <div class="name">{{player1.cards[0].name}}<span class="owner">({{player1.name}})</span></div>
+            <div class="winrate">
+              <label>1</label>
+              <i class="fas fa-percentage percentage"></i>
+            </div>
+            <p class="review">"wos"</p>
+            <p class="overview">Espartaco espartaco espartaco</p>
+      
+            <a href="{{ url_for('views.home')}}" class="button">Comprar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+{%else%}
+<div class = "resize col">
+  <div class="card ">
+      <div class="front border border-5 border-primary rounded" style="background-image: url('/static/uploads/{{player1.cards[0].img}}')">
+        <p class="large"></p>
+        <div class="position-absolute bottom-0 container row row-cols-4 p-1 stats">
+            <div class="col py-2" style="background-image: url('/static/img/banner-rojo.png')">
+                <div>
+                    ATQ
+                </div>
+                <div>
+                    {{player1.cards[0].attack}}
+                </div>
+                <div class="attack pt-2" >
+                    <i class="fas fa-fist-raised icon"></i>
+                </div>
+                
+            </div>
+            <div class="col py-2" style="background-image: url('/static/img/banner-verde.png')">
+                <div>
+                    DEF
+                </div>
+                <div>
+                  {{player1.cards[0].defense}}
+                </div>
+                <div class="defense pt-2">
+                    <i class="fas fa-shield-alt icon"></i>
+                </div>
+            </div>
+            <div class="col py-2" style="background-image: url('/static/img/banner-azul.png')">
+              <div>
+                    INT
+                </div>
+                <div>
+                  {{player1.cards[0].intelligence}}
+                </div>
+                <div class="intelligence pt-2">
+                    <i class="fas fa-brain icon"></i>
+                </div>
+            </div>
+            <div class="col py-2" style="background-image: url('/static/img/banner-amarillo.png')">
+              <div>
+                    VEL
+                </div>
+                <div>
+                  {{player1.cards[0].speed}}
+                </div>
+                <div class="speed pt-2">
+                    <i class="fas fa-running icon"></i>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="back border border-5 border-primary rounded">
+        <div>
+          <div class="name">{{player1.cards[0].name}}<span class="owner">({{player1.name}})</span></div>
+          <div class="winrate">
+            <label>1</label>
+            <i class="fas fa-percentage percentage"></i>
+          </div>
+          <p class="review">"wos"</p>
+          <p class="overview">Espartaco espartaco espartaco</p>
+    
+          <a href="{{ url_for('views.home')}}" class="button">Comprar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class = "resize col">
+    <div class="card ">
+        <div class="front border border-5 border-primary rounded" style="background-image: url('/static/uploads/{{player2.cards[0].img}}')">
+          <p class="large"></p>
+          <div class="position-absolute bottom-0 container row row-cols-4 p-1 stats">
+              <div class="col py-2" style="background-image: url('/static/img/banner-rojo.png')">
+                  <div>
+                      ATQ
+                  </div>
+                  <div>
+                      {{player2.cards[0].attack}}
+                  </div>
+                  <div class="attack pt-2" >
+                      <i class="fas fa-fist-raised icon"></i>
+                  </div>
+                  
+              </div>
+              <div class="col py-2" style="background-image: url('/static/img/banner-verde.png')">
+                  <div>
+                      DEF
+                  </div>
+                  <div>
+                    {{player2.cards[0].defense}}
+                  </div>
+                  <div class="defense pt-2">
+                      <i class="fas fa-shield-alt icon"></i>
+                  </div>
+              </div>
+              <div class="col py-2" style="background-image: url('/static/img/banner-azul.png')">
+                <div>
+                      INT
+                  </div>
+                  <div>
+                    {{player2.cards[0].intelligence}}
+                  </div>
+                  <div class="intelligence pt-2">
+                      <i class="fas fa-brain icon"></i>
+                  </div>
+              </div>
+              <div class="col py-2" style="background-image: url('/static/img/banner-amarillo.png')">
+                <div>
+                      VEL
+                  </div>
+                  <div>
+                    {{player2.cards[0].speed}}
+                  </div>
+                  <div class="speed pt-2">
+                      <i class="fas fa-running icon"></i>
+                  </div>
+              </div>
+          </div>
+        </div>
+        <div class="back border border-5 border-primary rounded">
+          <div>
+            <div class="name">{{player2.cards[0].name}}<span class="owner">({{player2.name}})</span></div>
+            <div class="winrate">
+              <label>1</label>
+              <i class="fas fa-percentage percentage"></i>
+            </div>
+            <p class="review">"wos"</p>
+            <p class="overview">Espartaco espartaco espartaco</p>
+      
+            <a href="{{ url_for('views.home')}}" class="button">Comprar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+{%endif%}
+
+
+{%endblock%}
+
+{% block scripts%}
+<script
+type="text/javascript"
+src="{{url_for('static', filename='js/battle_events.js')}}"
+></script>
+{%endblock%}

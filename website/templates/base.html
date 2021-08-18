@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <title>{% block title %}BoysKaos{% endblock %}</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-2">
+      <div class="container-fluid">
+        <a href="/" class="navbar-brand">BoysKaos Alfa v0.1</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbar"
+          aria-controls="navbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        {%if user.admin%}
+        <a
+        class="nav-item nav-link mx-2 {%block admin%}{%endblock%}"
+        id="admin"
+        title="Admin"
+        href="{{ url_for('views.admin_delete_cards') }}"
+      >
+        <i class="fas fa-user-lock"></i>
+        <span class="navbar-toggler border-0">Admin</span>
+      </a>
+      {%endif%}
+        <div class="collapse navbar-collapse" id="navbar">
+          <div class="navbar-nav ms-auto">
+            {% if user.is_authenticated %}
+            <li class="nav-item dropdown mx-2">
+              <a
+                class="nav-link dropdown-toggle"
+                href="{{ url_for('views.home') }}"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                title="Rivales Conectados"
+                aria-expanded="false"
+              >
+                <i class="fas fa-fist-raised"></i>
+                <span class="navbar-toggler border-0">Rivales conectados</span>
+              </a>
+              <ul
+                class="dropdown-menu rivals navbar-dark bg-dark"
+                aria-labelledby="navbarDropdownMenuLink"
+              ></ul>
+            </li>
+            <a
+              class="nav-item nav-link mx-2 {%block create_card%}{%endblock%}"
+              id="createCard"
+              title="Crear Carta"
+              href="{{ url_for('views.create_card') }}"
+            >
+              <i class="fas fa-plus-square"></i>
+              <span class="navbar-toggler border-0">Crear carta</span>
+            </a>
+            <a
+              class="nav-item nav-link mx-2 {%block my_cards%}{%endblock%}"
+              id="myCards"
+              href="{{ url_for('views.my_cards') }}"
+              title="Tus cartas"
+            >
+              <i class="far fa-clone"></i>
+              <span class="navbar-toggler border-0">Tus cartas</span>
+            </a>
+            <a
+              class="nav-item nav-link mx-2"
+              id="logout"
+              href="{{ url_for('auth.logout') }}"
+              title="Cerrar sesión"
+            >
+              <i class="fas fa-power-off"></i>
+              <span class="navbar-toggler border-0">Cerrar sesión</span>
+            </a>
+            {% else %}
+            <a
+              class="nav-item nav-link mx-2 {%block login_link%}{%endblock%}"
+              title="Iniciar Sesión"
+              id="login"
+              href="{{ url_for('auth.login') }}"
+            >
+              <i class="fas fa-sign-in-alt"></i>
+              <span class="navbar-toggler border-0">Iniciar sesión</span>
+            </a>
+            <a
+              class="nav-item nav-link mx-2 {%block signUp_link%}{%endblock%}"
+              title="Registrarse"
+              id="signUp"
+              href="{{ url_for('auth.sign_up') }}"
+            >
+              <i class="fas fa-user-plus"></i>
+              <span class="navbar-toggler border-0">Registrarse</span>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </nav>
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %} {% if category =='error'
+    %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    {% else%}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    {% endif %} {% endfor %} {% endif %} {%endwith %}
+
+    <div class="container mt-3">
+      {%block content%} {%endblock%}
+      <div class="challengeButtons"></div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
+      integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA=="
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    
+    <script>
+      current_user = "{{user.name}}"
+    </script>
+
+       <script
+      type="text/javascript"
+      src="{{url_for('static', filename='js/challenge_events.js')}}"
+    ></script>
+    
+    {%block scripts%} {%endblock%}
+
+    <script
+      type="text/javascript"
+      src="{{url_for('static', filename='js/index.js')}}"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+{% extends "base.html" %} 
+{% block admin%}active{%endblock%} 
+{% block content%}
+
+  <h1 class="heading">Borrar cartas</h1>
+  <p class="description">
+    ¡Ojo una vez las borres no hay marcha atrás!
+  </p>
+  {% include "deck.html" %}
+  <h1 class="heading">Puedes hacer admin a cualquier usuario</h1>
+{%for user in users%}
+  {%if user.admin %}
+    <a type="submit" class="btn btn-success" href="{{ url_for('views.admin_delete_cards')}}{{user.name}}">{{user.name}}</a>
+  {%else%}
+    <a type="submit" class="btn btn-secondary" href="{{ url_for('views.admin_delete_cards')}}{{user.name}}">{{user.name}}</a>
+  {%endif%}
+{%endfor%}
+{%endblock%}

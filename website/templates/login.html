@@ -1,0 +1,20 @@
+{% extends "base.html" %} 
+{% block login_link%}active{% endblock%} 
+{% block content%}
+
+<h3 align="center">Iniciar sesión</h3>
+<form method="POST" action={{ url_for('auth.login')}}>
+    <div class="mb-3">
+      <label for="name" class="form-label">Nombre</label>
+      <input type="text" name="name" class="form-control" id="name">
+      <div id="nameHelp" class="form-text">Tu nombre de usuario o nick lo que prefieras.</div>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" name="password" class="form-control" id="password">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+  </form>
+
+{% endblock%}

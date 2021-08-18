@@ -1,0 +1,13 @@
+{% extends "base.html" %} 
+{% block my_cards%}active{%endblock%} 
+{% block content%}
+
+  <h1 class="heading">Tus cartas</h1>
+  <p class="description">
+    Estas son las cartas que has creado tú.
+  </p>
+  {%set cards = user.cards%}
+  {% include "deck.html" %}
+
+{%endblock%}
+

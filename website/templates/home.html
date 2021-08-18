@@ -1,0 +1,11 @@
+{% extends "base.html" %} 
+{% block home_link%}active{%endblock%} 
+{% block content%}
+
+<h1 class="heading">10 mejores cartas de esta semana</h1>
+<p class="description">
+  Estas son las mejores cartas de la semana ordenadas por winrate (porcentaje de
+  victorias).
+</p>
+{% include "card.html" %}
+{%endblock%}
